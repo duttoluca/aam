@@ -36,8 +36,8 @@ class ADE_request(models.Model):
 
 class ADE_detail(models.Model):
     cfisc_orig = models.CharField(max_length=16,
-                             help_text="Codice Fiscale",
-                             verbose_name="Codice Fiscale")
+                             help_text="Codice Fiscale Originale",
+                             verbose_name="Codice Fiscale Originale")
     cfisc = models.CharField(max_length=16,
                              help_text="Codice Fiscale",
                              verbose_name="Codice Fiscale",

@@ -1,9 +1,11 @@
+import os.path
 from django.core.management.base import BaseCommand
 from ade.models import ADE_request, ADE_detail
+import aam.settings as settings
 
 
 class Command(BaseCommand):
-    help = "Crea le richieste AdE"
+    help = "Crea i file di richiesta AdE"
 
     def handle(self, *args, **options):
         ADE_HEADER = "080087670016     REGIONE PIEMONTE                                            ZNLFRZ59L25H620OZANELLA                                 FABRIZIO                                M25071959ROVIGO                                       RO                                                                      A\n"
@@ -17,8 +19,8 @@ class Command(BaseCommand):
             timestamp = year+month+day
             #self.stdout.write(timestamp)
             # crea file fisiche e giuridiche
-            outputFilePF = file("ADE_AAM_PF_" + timestamp + "_" + str(r.id) + ".TXT","wb")
-            outputFilePG = file("ADE_AAM_PG_" + timestamp + "_" + str(r.id) + ".TXT","wb")
+            outputFilePF = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PF_" + timestamp + "_" + str(r.id) + ".TXT"),"wb")
+            outputFilePG = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PG_" + timestamp + "_" + str(r.id) + ".TXT"),"wb")
             outputFilePF.write(ADE_HEADER)
             outputFilePG.write(ADE_HEADER)
             #trova i dettagli associati alla richiesta

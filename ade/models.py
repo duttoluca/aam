@@ -17,7 +17,8 @@ class ADE_request(models.Model):
                                          verbose_name="Richiesta")
     status = models.IntegerField(choices=STATUS_CHOICES,
                                  verbose_name="Status",
-                                 help_text="Stato della richiesta")
+                                 help_text="Stato della richiesta",
+                                 default=0)
     insert_date = models.DateTimeField(verbose_name="Data inserimento",
                                        help_text="Data inserimento richiesta")
     return_date = models.DateTimeField(verbose_name="Data ritorno",

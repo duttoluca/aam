@@ -4,6 +4,8 @@ import os
 
 DIR = os.path.dirname(__file__)
 
+ADE_INPUT_DIR = r'C:\ADE\INPUT'
+ADE_OUTPUT_DIR = r'C:\ADE\OUTPUT'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG

@@ -1,0 +1,6 @@
+Django==1.4.3
+South==0.7.6
+django-debug-toolbar==0.9.4
+ipython==0.13.1
+## FIXME: could not find svn URL in dependency_links for this package:
+pyreadline==1.7.1.dev-r0

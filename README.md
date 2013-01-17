@@ -1,0 +1,4 @@
+aam
+===
+
+AdE Automated Manager

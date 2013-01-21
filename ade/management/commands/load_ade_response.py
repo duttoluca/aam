@@ -15,7 +15,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **options):
         pass
-    
+
     # per ogni file di tipo ESITO_ADE_AAM_[PF|PG]_*
         #estrae la PK
         #se esiste
@@ -25,4 +25,3 @@ class Command(BaseCommand):
                 #salva il detail
         #Aggiorna data di ritorno e status della richiesta e salva
         #sposta il file in archivio
-        

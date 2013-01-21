@@ -30,7 +30,7 @@ class ADE_request(models.Model):
         return self.original_filename
 
     class Meta:
-        ordering = ['insert_date']
+        ordering = ['-insert_date']
         verbose_name = 'Richiesta AdE'
         verbose_name_plural = 'Richieste AdE'
 

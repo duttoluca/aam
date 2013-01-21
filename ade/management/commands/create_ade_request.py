@@ -10,13 +10,12 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         ADE_HEADER = "080087670016     REGIONE PIEMONTE                                            ZNLFRZ59L25H620OZANELLA                                 FABRIZIO                                M25071959ROVIGO                                       RO                                                                      A\n"
         ADE_FOOTER = "980087670016     REGIONE PIEMONTE                                            ZNLFRZ59L25H620OZANELLA                                 FABRIZIO                                M25071959ROVIGO                                       RO          000159000149000008                                          A\n"
-        #self.stdout.write( "Hello" )
         r_list = ADE_request.objects.filter(status=0)
         for r in r_list:
             year = str(r.insert_date.year)
             month = str(r.insert_date.month).rjust(2, '0')
             day = str(r.insert_date.day).rjust(2, '0')
-            timestamp = year+month+day
+            timestamp = year + month + day
             #self.stdout.write(timestamp)
             # crea file fisiche e giuridiche
             outputFilePF = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PF_" + timestamp + "_" + str(r.id) + ".TXT"),"wb")
@@ -27,10 +26,10 @@ class Command(BaseCommand):
             d_list = ADE_detail.objects.select_for_update().filter(ADE_request__id=r.id)
             for d in d_list:
                 if len(d.cfisc_orig) == 16:
-                    row = "1" + 15*" " + d.cfisc_orig + 218*" " + "\n"
+                    row = "1" + 15 * " " + d.cfisc_orig + 218 * " " + "\n"
                     outputFilePF.write(row)
                 elif len(d.cfisc_orig) == 11:
-                    row = "2" + 15*" " + d.cfisc_orig + 218*" " + "\n"
+                    row = "2" + 15 * " " + d.cfisc_orig + 218 * " " + "\n"
                     outputFilePG.write(row)
                 else:
                     #CFISC errato, non faccio nulla
@@ -42,4 +41,3 @@ class Command(BaseCommand):
             # cambia lo status della richiesta
             r.status = 1
             r.save()
-

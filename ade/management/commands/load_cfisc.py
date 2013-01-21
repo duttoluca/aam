@@ -1,12 +1,14 @@
 import glob
 import datetime
 import os.path
+import shutil
 from django.core.management.base import BaseCommand
 from ade.models import ADE_request, ADE_detail
 import aam.settings as settings
 
+
 # TODO spostare i file dopo fatti
-# inserire controlli 
+# inserire controlli
 class Command(BaseCommand):
     help = "Acquisisce elenco cfisc per richiesta AdE"
 
@@ -17,11 +19,13 @@ class Command(BaseCommand):
         for f in files:
         #crea nuova ADE_request
             filename = os.path.basename(f)
-            print filename
+            #print filename
             r = ADE_request(original_filename=filename,
                             insert_date=datetime.datetime.now())
             r.save()
-            for line in file(f,"rb"):
+            for line in file(f, "rb"):
                 d = ADE_detail(cfisc_orig=line[:16].strip().upper(),
                                ADE_request=r)
                 d.save()
+            #sposta file in archivio
+            shutil.move(f, os.path.join(settings.ADE_ARCHIVE_DIR, 'INPUT'))

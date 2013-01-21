@@ -1,0 +1,16 @@
+{% extends 'layouts/base.html' %}
+
+{% block page_title %}Dettaglio Richiesta AdE numero {{ object.pk }} | {{  block.super }}{% endblock %}
+
+{% block main %}
+<div class="span10 offset1">
+	<h2>Dettaglio della richiesta AdE #{{ object.pk }}</h2>
+	<ul class="unstyled">
+		<li>Nome richiesta originale: {{ object.original_filename }}</li>
+		<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}
+		<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}
+		<li>Stato: {{ object.get_status_display }}</li>
+	</ul>
+
+</div>
+{% endblock main%}

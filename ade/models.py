@@ -29,6 +29,10 @@ class ADE_request(models.Model):
     def __unicode__(self):
         return self.original_filename
 
+    @permalink
+    def get_absolute_url(self):
+        return("ade", (), {"pk": self.pk})
+
     class Meta:
         ordering = ['-insert_date']
         verbose_name = 'Richiesta AdE'

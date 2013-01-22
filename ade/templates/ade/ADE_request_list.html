@@ -8,10 +8,10 @@
 {% if object_list %}
 	<ul class="unstyled">
 	{% for ADE_request in object_list %}
-		<li><a href="{{ ADE_request.get_absolute_url }}">{{ ADE_request }}</a></li>
+		<li>{{ ADE_request.insert_date|date:"d F Y - G:i" }} - {{ ADE_request.pk }} - stato <strong>{{ ADE_request.get_status_display }}</strong> - <a href="{{ ADE_request.get_absolute_url }}">{{ ADE_request }}</a></li>
 	{% endfor %}
 {% else %}
-Sorry, no categories yet...
+Sorry, no requests yet...
 {% endif %}
 </div>
 {% endblock %}

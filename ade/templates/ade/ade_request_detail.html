@@ -9,8 +9,41 @@
 		<li>Nome richiesta originale: {{ object.original_filename }}</li>
 		<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}
 		<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}
-		<li>Stato: {{ object.get_status_display }}</li>
+		<li>Stato: <strong>{{ object.get_status_display }}</strong></li>
+		<li><a href="{{ object.get_absolute_url }}download/">DOWNLOAD</a></li>
 	</ul>
 
+{% if details %}
+	<h3>Codici fiscali richiesti</h3>
+	<table class="table table-bordered table-striped table-condensed">
+		<thead>
+			<tr>
+				<th>CF</th>
+				<th>Cogn/Den</th>
+				<th>Nome</th>
+				<th>Comune res.</th>
+				<th>Prov.res.</th>
+				<th>CAP res.</th>
+				<th>Indirizzo res.</th>
+			</tr>
+		</thead>
+		<tbody>
+		{% for detail in details %}
+			{% with indirizzo=detail.sedime_residenza|add:" "|add:detail.nome_via_residenza|add:" "|add:detail.civico_residenza %}
+			<tr>
+				<td>{{ detail }}</td>
+				<td>{{ detail.cognome_denominazione }}</td>
+				<td>{{ detail.nome_acronimo }}</td>
+				<td>{{ detail.comune_residenza }}</td>
+				<td>{{ detail.prov_residenza }}</td>
+				<td>{{ detail.cap_residenza }}</td>
+				<td>{{ indirizzo.strip }}</td>
+			</tr>
+			{% endwith %}
+		{% endfor %}
+		</tbody>
+	</table>
+</div>
+{% endif %}
 </div>
 {% endblock main%}

@@ -23,12 +23,13 @@ class ADE_requestDetailView(DetailView):
 
 def create_xls(request, pk):
     book = xlwt.Workbook(encoding='utf8')
-    sheet = book.add_sheet('indirizzi')
+    sheet = book.add_sheet('ADE')
 
     default_style = xlwt.Style.default_style
     datetime_style = xlwt.easyxf(num_format_str='dd/mm/yyyy hh:mm')
     date_style = xlwt.easyxf(num_format_str='dd/mm/yyyy')
 
+    req = ADE_request.objects.get(id=pk)
     values_list = ADE_detail.objects.filter(ADE_request=pk).values_list()
 
     for row, rowdata in enumerate(values_list):
@@ -43,6 +44,6 @@ def create_xls(request, pk):
             sheet.write(row, col, val, style=style)
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
-    response['Content-Disposition'] = 'attachment; filename=example.xls'
+    response['Content-Disposition'] = 'attachment; filename=richiesta_' + str(req.pk).rjust(5, '0') + '.xls'
     book.save(response)
     return response

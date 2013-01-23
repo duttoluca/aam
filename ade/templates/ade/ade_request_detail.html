@@ -18,11 +18,14 @@
 	<table class="table table-bordered table-striped table-condensed">
 		<thead>
 			<tr>
-				<th>CF</th>
-				<th>Cogn/Den</th>
-				<th>Nome</th>
+				<th>C.F. / P.IVA originale</th>
+				<th>C.F. / P.IVA</th>
+				<th>Cogn. / Denom.</th>
+				<th>Nome / Acronimo</th>
+				<th>Sesso</th>
+				<!--  <th>Cod. Belfiore res.</th>  -->
 				<th>Comune res.</th>
-				<th>Prov.res.</th>
+				<th>Prov. res.</th>
 				<th>CAP res.</th>
 				<th>Indirizzo res.</th>
 				<th>Data decesso</th>
@@ -32,9 +35,12 @@
 		{% for detail in details %}
 			{% with indirizzo=detail.sedime_residenza|add:" "|add:detail.nome_via_residenza|add:" "|add:detail.civico_residenza %}
 			<tr>
-				<td>{{ detail }}</td>
+				<td>{{ detail.cfisc_orig }}</td>
+				<td>{{ detail.cfisc }}</td>
 				<td>{{ detail.cognome_denominazione }}</td>
 				<td>{{ detail.nome_acronimo }}</td>
+				<td>{{ detail.sesso }}</td>
+				<!--  <td>{{ detail.cod_belfiore_residenza }}</td> -->
 				<td>{{ detail.comune_residenza }}</td>
 				<td>{{ detail.prov_residenza }}</td>
 				<td>{{ detail.cap_residenza }}</td>

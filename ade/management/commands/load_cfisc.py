@@ -15,7 +15,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         # per ogni file di tipo ADE_in una cartella
         files = glob.glob(os.path.join(settings.ADE_INPUT_DIR,
-                                       "ADE_PIPPO_*"))
+                                       "ADE_REQ_*"))
         for f in files:
         #crea nuova ADE_request
             filename = os.path.basename(f)

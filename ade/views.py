@@ -27,7 +27,7 @@ def create_xls(request, pk):
     datetime_style = xlwt.easyxf(num_format_str='dd/mm/yyyy hh:mm')
 
     req = ADE_request.objects.get(id=pk)
-    details = ADE_detail.objects.filter(ADE_request=req.pk)
+    details = ADE_detail.objects.filter(ADE_request=pk)
 
     sheet = book.add_sheet(req.original_filename)
 

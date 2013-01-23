@@ -8,7 +8,7 @@ class ADE_request(models.Model):
     STATUS_CHOICES = (
     (0, 'Inserito'),
     (1, 'Richiesto'),
-    (2, 'Ritornato'),
+    (2, 'Elaborato'),
     (99, 'Eliminato'),
 )
 

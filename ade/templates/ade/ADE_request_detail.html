@@ -19,7 +19,7 @@
 		<thead>
 			<tr>
 				<th>C.F. / P.IVA originale</th>
-				<th>C.F. / P.IVA</th>
+				<!-- <th>C.F. / P.IVA</th>   -->
 				<th>Cogn. / Denom.</th>
 				<th>Nome / Acronimo</th>
 				<th>Sesso</th>
@@ -36,7 +36,7 @@
 			{% with indirizzo=detail.sedime_residenza|add:" "|add:detail.nome_via_residenza|add:" "|add:detail.civico_residenza %}
 			<tr>
 				<td>{{ detail.cfisc_orig }}</td>
-				<td>{{ detail.cfisc }}</td>
+				<!--  <td>{{ detail.cfisc }}</td> -->
 				<td>{{ detail.cognome_denominazione }}</td>
 				<td>{{ detail.nome_acronimo }}</td>
 				<td>{{ detail.sesso }}</td>

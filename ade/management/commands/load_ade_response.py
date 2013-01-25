@@ -21,7 +21,7 @@ class Command(BaseCommand):
             filename = os.path.basename(f).partition('.')[0]
             pk = int(filename.split('_')[5])
             try:
-                req = ADE_request.objects.get(id=pk, status = 1)
+                req = ADE_request.objects.get(id=pk, status__gt=0)
                 for line in file(f, "rb"):
                     if (line[0] == '1' or line[0] == '2'):
                         if line[0] == '1':
@@ -29,6 +29,7 @@ class Command(BaseCommand):
                         else:
                             p_fisica = False
                         cfisc_orig = line[16:32].strip()
+                        #print cfisc_orig
                         details = ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig)
                         for detail in details:
                             detail.cfisc = line[228:244].strip()

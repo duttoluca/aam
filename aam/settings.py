@@ -10,7 +10,7 @@ ADE_ARCHIVE_DIR = r'C:\ADE\ARCHIVE'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
-DEBUG_TOOLBAR_ENABLED = False
+DEBUG_TOOLBAR_ENABLED = True
 
 APPEND_SLASH = True
 FILE_CHARSET = 'ISO-8859-1'
@@ -169,6 +169,11 @@ LOGGING = {
         },
     }
 }
+
+try:
+    from local_settings import *
+except ImportError:
+    pass
 
 if DEBUG and DEBUG_TOOLBAR_ENABLED:
     MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)

@@ -3,8 +3,8 @@ import datetime
 import os.path
 import shutil
 from django.core.management.base import BaseCommand
+from django.conf import settings
 from ade.models import ADE_request, ADE_detail
-import aam.settings as settings
 
 
 # TODO spostare i file dopo fatti

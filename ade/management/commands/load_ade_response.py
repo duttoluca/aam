@@ -47,7 +47,6 @@ class Command(BaseCommand):
                                 detail.comune_residenza = line[391:436].strip()
                                 detail.prov_residenza = line[436:438].strip()
                                 detail.CAP_residenza = line[438:443].strip()
-                                print line[438:443].strip()
                                 detail.fonte = line[443:444].strip()
                                 detail.data_fonte = line[444:452].strip()
                                 detail.sedime_residenza = line[452:477].strip()

@@ -24,8 +24,9 @@ class Command(BaseCommand):
                             insert_date=datetime.datetime.now())
             r.save()
             for line in file(f, "rb"):
-                d = ADE_detail(cfisc_orig=line[:16].strip().upper(),
-                               ADE_request=r)
-                d.save()
+                if line.strip() != '':
+                    d = ADE_detail(cfisc_orig=line[:16].strip().upper(),
+                                   ADE_request=r)
+                    d.save()
             #sposta file in archivio
             shutil.move(f, os.path.join(settings.ADE_ARCHIVE_DIR, 'INPUT'))

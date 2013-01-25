@@ -18,8 +18,8 @@ class Command(BaseCommand):
             timestamp = year + month + day
             #self.stdout.write(timestamp)
             # crea file fisiche e giuridiche
-            outputFilePF = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PF_" + timestamp + "_" + str(r.id) + ".TXT"),"wb", newline='\r\n')
-            outputFilePG = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PG_" + timestamp + "_" + str(r.id) + ".TXT"),"wb", newline='\r\n')
+            outputFilePF = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PF_" + timestamp + "_" + str(r.id) + ".TXT"),"wb")
+            outputFilePG = file(os.path.join(settings.ADE_OUTPUT_DIR,"ADE_AAM_PG_" + timestamp + "_" + str(r.id) + ".TXT"),"wb")
             outputFilePF.write(ADE_HEADER)
             outputFilePG.write(ADE_HEADER)
             #trova i dettagli associati alla richiesta

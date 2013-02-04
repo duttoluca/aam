@@ -29,7 +29,7 @@ def create_xls(request, pk):
     req = ADE_request.objects.get(id=pk)
     details = ADE_detail.objects.filter(ADE_request=pk)
 
-    sheet = book.add_sheet(req.original_filename)
+    sheet = book.add_sheet('Richiesta ADE')
 
     sheet.write(0, 0, 'Dettaglio richiesta AdE', style=default_style)
     sheet.write(2, 0, 'File originale', style=default_style)

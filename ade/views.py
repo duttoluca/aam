@@ -54,6 +54,7 @@ def create_xls(request, pk):
     sheet.write(7, 9, 'VIA RES.', style=default_style)
     sheet.write(7, 10, 'CIVICO RES.', style=default_style)
     sheet.write(7, 11, 'DATA DECESSO', style=default_style)
+    sheet.write(7, 12, 'DATA FONTE', style=default_style)
 
     for row, detail in enumerate(details, start=8):
         sheet.write(row, 0, detail.cfisc_orig, style=default_style)
@@ -68,6 +69,7 @@ def create_xls(request, pk):
         sheet.write(row, 9, detail.nome_via_residenza, style=default_style)
         sheet.write(row, 10, detail.civico_residenza, style=default_style)
         sheet.write(row, 11, detail.data_decesso, style=default_style)
+        sheet.write(row, 12, detail.data_fonte, style=default_style)
 
     response = HttpResponse(mimetype='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=richiesta_' + str(req.pk).rjust(5, '0') + '.xls'

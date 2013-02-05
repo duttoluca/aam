@@ -29,6 +29,7 @@
 					<th>CAP res.</th>
 					<th>Indirizzo res.</th>
 					<th>Data decesso</th>
+					<th>Data fonte</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -45,6 +46,7 @@
 					<td>{{ detail.CAP_residenza }}</td>
 					<td>{{ indirizzo.strip }}</td>
 					<td>{{ detail.data_decesso }}</td>
+					<td>{{ detail.data_fonte }}</td>
 				</tr>
 				{% endwith %}
 			{% endfor %}

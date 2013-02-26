@@ -15,6 +15,9 @@
 		</ul>
 	
 	{% if details %}
+		{% if details.count == 1000 %}
+		<p><strong>Attenzione, vengono visualizzati solo i primi 1000 record della richiesta!</strong></p>
+		{% endif %}
 		<h3>Codici fiscali richiesti</h3>
 		<table class="table table-bordered table-striped table-condensed">
 			<thead>

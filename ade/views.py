@@ -17,7 +17,7 @@ class ADE_requestDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(ADE_requestDetailView, self).get_context_data(**kwargs)
         req = self.get_object()
-        context['details'] = ADE_detail.objects.filter(ADE_request=req.pk)
+        context['details'] = ADE_detail.objects.filter(ADE_request=req.pk)[:1000]
         return context
 
 

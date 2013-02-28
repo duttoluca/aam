@@ -6,6 +6,7 @@ import shutil
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from ade.models import ADE_request, ADE_detail
+from django.utils.encoding import smart_unicode
 
 
 # inserire controlli
@@ -22,7 +23,7 @@ class Command(BaseCommand):
             try:
                 req = ADE_request.objects.get(id=pk, status__gt=0)
                 for l in file(f, "rb"):
-                    line = unicode(l, errors='strict')  # convert to unicode
+                    line = smart_unicode(l)  # convert to unicode
                     if (line[0] == '1' or line[0] == '2'):
                         if line[0] == '1':
                             p_fisica = True

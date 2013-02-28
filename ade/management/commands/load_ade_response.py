@@ -21,7 +21,8 @@ class Command(BaseCommand):
             pk = int(filename.split('_')[5])
             try:
                 req = ADE_request.objects.get(id=pk, status__gt=0)
-                for line in file(f, "rb"):
+                for l in file(f, "rb"):
+                    line = unicode(l, errors='ignore')
                     if (line[0] == '1' or line[0] == '2'):
                         if line[0] == '1':
                             p_fisica = True

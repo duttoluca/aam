@@ -77,7 +77,7 @@ class Command(BaseCommand):
                                                                                                 cfisc=cfisc,
                                                                                                 sogg_valido=sogg_valido,
                                                                                                 #cc1=cc1,
-                                                                                                cc2=cc2,
+                                                                                                #cc2=cc2,
                                                                                                 cognome_denominazione=cognome_denominazione,
                                                                                                 nome_acronimo=nome_acronimo,
                                                                                                 sesso=sesso,

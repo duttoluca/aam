@@ -23,7 +23,7 @@ class Command(BaseCommand):
             pk = int(filename.split('_')[5])
             try:
                 req = ADE_request.objects.get(id=pk, status__gt=0)
-                with transaction.commit_on_success():
+                with transaction.commit_manually():
                     for l in file(f, "rb"):
                         line = smart_unicode(l, encoding='latin_1')  # convert to unicode
                         if (line[0] == '1' or line[0] == '2'):
@@ -74,6 +74,7 @@ class Command(BaseCommand):
                                     detail.civico_residenza = line[574:599].strip()
                                     detail.ind_norm = line[634:635].strip()
                                 detail.save()
+                transaction.commit()                        
                 req.status = 2
                 req.return_date = datetime.datetime.now()
                 req.save()

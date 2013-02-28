@@ -74,7 +74,7 @@ class Command(BaseCommand):
                             ind_norm = line[634:635].strip()
                         #update
                         details = ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig)
-                        print details
+                        #print details
                         details.update(cfisc=cfisc,
                                                                                                 sogg_valido=sogg_valido,
                                                                                                 cc1=cc1,

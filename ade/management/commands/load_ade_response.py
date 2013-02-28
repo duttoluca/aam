@@ -22,7 +22,7 @@ class Command(BaseCommand):
             try:
                 req = ADE_request.objects.get(id=pk, status__gt=0)
                 for l in file(f, "rb"):
-                    line = unicode(l, errors='ignore')
+                    line = unicode(l, errors='strict')  # convert to unicode
                     if (line[0] == '1' or line[0] == '2'):
                         if line[0] == '1':
                             p_fisica = True

@@ -75,7 +75,8 @@ class Command(BaseCommand):
                         #update
                         ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig).update(cfisc_orig=cfisc_orig,
                                                                                                 cfisc=cfisc,
-                                                                                                sogg_valido=sogg_valido,                                                                               cc1=cc1,
+                                                                                                sogg_valido=sogg_valido,
+                                                                                                cc1=cc1,
                                                                                                 cc2=cc2,
                                                                                                 cognome_denominazione=cognome_denominazione,
                                                                                                 nome_acronimo=nome_acronimo,

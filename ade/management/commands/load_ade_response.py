@@ -33,7 +33,7 @@ class Command(BaseCommand):
                             p_fisica = False
                         cfisc_orig = line[16:32].strip()
                         #print cfisc_orig
-                        details = ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig)
+                        details = ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig).iterator()
                         for detail in details:
                             detail.cfisc = line[228:244].strip()
                             detail.sogg_valido = line[244:245].strip()

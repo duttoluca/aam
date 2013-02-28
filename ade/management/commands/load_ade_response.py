@@ -7,12 +7,14 @@ from django.core.management.base import BaseCommand
 from django.conf import settings
 from ade.models import ADE_request, ADE_detail
 from django.utils.encoding import smart_unicode
+from django.db import transaction
 
 
 # inserire controlli
 class Command(BaseCommand):
     help = "Acquisisce risposta AdE"
 
+    @transaction.commit_on_success
     def handle(self, *args, **options):
         # per ogni file di tipo ADE_in una cartella
         files = glob.glob(os.path.join(settings.ADE_INPUT_DIR,

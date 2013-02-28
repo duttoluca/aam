@@ -23,7 +23,7 @@ class Command(BaseCommand):
             try:
                 req = ADE_request.objects.get(id=pk, status__gt=0)
                 for l in file(f, "rb"):
-                    line = smart_unicode(l)  # convert to unicode
+                    line = smart_unicode(l, encoding='latin_1')  # convert to unicode
                     if (line[0] == '1' or line[0] == '2'):
                         if line[0] == '1':
                             p_fisica = True

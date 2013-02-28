@@ -47,9 +47,9 @@ class ADE_detail(models.Model):
                              help_text="Codice Fiscale",
                              verbose_name="Codice Fiscale",
                              blank=True)
-    sogg_valido = models.CharField(max_length=1, blank=True),
-    cc1 = models.CharField(max_length=1, blank=True),
-    cc2 = models.CharField(max_length=1, blank=True),
+    sogg_valido = models.CharField(max_length=1, blank=True)
+    cc1 = models.CharField(max_length=1, blank=True)
+    cc2 = models.CharField(max_length=1, blank=True)
     cognome_denominazione = models.CharField(max_length=150,
                                              verbose_name="Cognome/Denominazione",
                                              help_text="Cognome/Denominazione",

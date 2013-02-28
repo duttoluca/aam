@@ -69,7 +69,10 @@ class Command(BaseCommand):
                                 detail.nome_via_residenza = line[504:574].strip()
                                 detail.civico_residenza = line[574:599].strip()
                                 detail.ind_norm = line[634:635].strip()
-                            detail.save()
+                            try:
+                                detail.save()
+                            except Exception:
+                                print line
                 req.status = 2
                 req.return_date = datetime.datetime.now()
                 req.save()

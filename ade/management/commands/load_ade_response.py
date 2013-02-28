@@ -73,7 +73,7 @@ class Command(BaseCommand):
                             civico_residenza = line[574:599].strip()
                             ind_norm = line[634:635].strip()
                         #update
-                        ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig).update(cfisc_orig=cfisc_orig,
+                        ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig).update(
                                                                                                 cfisc=cfisc,
                                                                                                 sogg_valido=sogg_valido,
                                                                                                 cc1=cc1,

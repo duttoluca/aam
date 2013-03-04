@@ -20,7 +20,7 @@ Tre batch schedulati gestiscono le richieste:
 	{% if object_list %}
 		<ul class="unstyled">
 		{% for ADE_request in object_list %}
-			<li>{{ ADE_request.insert_date|date:"d F Y - G:i" }} - {{ ADE_request.pk }} - stato <strong>{{ ADE_request.get_status_display }}</strong> - <a href="{{ ADE_request.get_absolute_url }}">{{ ADE_request }}</a> - <a href="{% url "excel" ADE_request.pk %}"><i class="icon-th-list"></i> </a> - <a href="{% url "norm" ADE_request.pk %}"><i class="icon-road"></i> </a></li>
+			<li>{{ ADE_request.insert_date|date:"d F Y - G:i" }} - {{ ADE_request.pk }} - stato <strong>{{ ADE_request.get_status_display }}</strong> - <a href="{{ ADE_request.get_absolute_url }}">{{ ADE_request }}</a> - <a href="{% url "excel" ADE_request.pk %}"><i class="icon-th-list"></i></a>{% if ADE_request.status >= 2 %} - <a href="{% url "norm" ADE_request.pk %}"><i class="icon-road"></i></a>{% endif %}</li>
 		{% endfor %}
 	{% else %}
 	Sorry, no requests yet...

@@ -1,6 +1,6 @@
 from django.conf.urls import patterns, include, url
 
-from ade.views import ADE_requestListView, ADE_requestDetailView, create_xls
+from ade.views import ADE_requestListView, ADE_requestDetailView, create_xls, create_norm_file
 
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
@@ -16,5 +16,6 @@ urlpatterns = patterns('',
         ADE_requestDetailView.as_view(),
         name='ade'),
     url(r'^ade/(?P<pk>\d+)/download/$', create_xls, name='excel'),
+    url(r'^ade/(?P<pk>\d+)/norm/$', create_norm_file, name='norm'),
     url(r'^admin/', include(admin.site.urls)),
 )

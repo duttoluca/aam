@@ -75,3 +75,21 @@ def create_xls(request, pk):
     response['Content-Disposition'] = 'attachment; filename=richiesta_' + str(req.pk).rjust(5, '0') + '.xls'
     book.save(response)
     return response
+
+
+def create_norm_file(request, pk):
+    response = HttpResponse(content_type='text/plain')
+    details = ADE_detail.objects.filter(ADE_request=pk)
+    for d in details:
+        line = (28 * ' ' +
+                d.cfisc_orig.ljust(16, ' ') +
+                d.cognome_denominazione.ljust(50, ' ') +
+                d.nome_acronimo.ljust(50, ' ') +
+                (d.sedime_residenza + ' ' + d.nome_via_residenza + ' ' + d.civico_residenza).strip().ljust(50, ' ') +
+                d.CAP_residenza.ljust(5, '0') +
+                d.comune_residenza.ljust(25, ' ') +
+                d.prov_residenza.ljust(2, ' ') +
+                 '\n')
+        response.write(line)
+    response['Content-Disposition'] = 'attachment; filename=NORM_ADE_AAM_' + str(pk).rjust(5, '0') + '.TXT'
+    return response

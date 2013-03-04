@@ -82,13 +82,13 @@ def create_norm_file(request, pk):
     details = ADE_detail.objects.filter(ADE_request=pk)
     for d in details:
         line = (28 * ' ' +
-                d.cfisc_orig.ljust(16, ' ') +
-                d.cognome_denominazione.ljust(50, ' ') +
-                d.nome_acronimo.ljust(50, ' ') +
-                (d.sedime_residenza + ' ' + d.nome_via_residenza + ' ' + d.civico_residenza).strip().ljust(50, ' ') +
-                d.CAP_residenza.ljust(5, '0') +
-                d.comune_residenza.ljust(25, ' ') +
-                d.prov_residenza.ljust(2, ' ') +
+                d.cfisc_orig[:16].ljust(16, ' ') +
+                d.cognome_denominazione[:50].ljust(50, ' ') +
+                d.nome_acronimo[:50].ljust(50, ' ') +
+                ((d.sedime_residenza + ' ' + d.nome_via_residenza + ' ' + d.civico_residenza).strip())[:50].ljust(50, ' ') +
+                d.CAP_residenza[:5].ljust(5, '0') +
+                d.comune_residenza[:25].ljust(25, ' ') +
+                d.prov_residenza[:2].ljust(2, ' ') +
                  '\n')
         response.write(line)
     response['Content-Disposition'] = 'attachment; filename=NORM_ADE_AAM_' + str(pk).rjust(5, '0') + '.TXT'

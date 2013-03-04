@@ -2,7 +2,7 @@
 .project
 .pydevproject
 .settings
-
+/aam/dj_static_archive
 # Packages
 *.egg
 *.egg-info

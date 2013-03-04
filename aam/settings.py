@@ -15,6 +15,8 @@ DEBUG_TOOLBAR_ENABLED = True
 APPEND_SLASH = True
 FILE_CHARSET = 'ISO-8859-1'
 
+ALLOWED_HOSTS = ['*']
+
 ADMINS = (
     # ('Luca Dutto', 'your_email@example.com'),
 )

@@ -11,7 +11,7 @@
 			<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}
 			<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}
 			<li>Stato: <strong>{{ object.get_status_display }}</strong></li>
-			<li><i class="icon-download"></i> <a href="{% url 'excel' object.pk %}">Download file excel</a></li>
+			<li><i class="icon-download"></i> <a href="{% url excel object.pk %}">Download file excel</a></li>
 		</ul>
 	
 	{% if details %}

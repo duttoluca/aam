@@ -85,7 +85,7 @@ def create_norm_file(request, pk):
                 d.cfisc_orig[:16].ljust(16, ' ') +
                 d.cognome_denominazione[:50].ljust(50, ' ') +
                 d.nome_acronimo[:50].ljust(50, ' ') +
-                ((d.sedime_residenza + ' ' + d.nome_via_residenza + ' ' + d.civico_residenza).strip())[:50].ljust(50, ' ') +
+                ((d.sedime_residenza.strip() + ' ' + d.nome_via_residenza.strip() + ' ' + d.civico_residenza.strip()).strip())[:50].ljust(50, ' ') +
                 d.CAP_residenza[:5].ljust(5, '0') +
                 d.comune_residenza[:25].ljust(25, ' ') +
                 d.prov_residenza[:2].ljust(2, ' ') +

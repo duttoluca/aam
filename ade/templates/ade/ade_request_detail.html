@@ -11,9 +11,9 @@
 			<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}
 			<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}
 			<li>Stato: <strong>{{ object.get_status_display }}</strong></li>
-			<li><i class="icon-th-list"></i> <a href="{% url "excel" object.pk %}">Download file excel</a></li>
+			<li><i class="icon-th-list" title="download file excel"></i> <a href="{% url "excel" object.pk %}">Download file excel</a></li>
 			{% if object.status >= 2 %} 
-				<li><i class="icon-road"></i> <a href="{% url "norm" object.pk %}">Download file per la normalizzazione</a></li>
+				<li><i class="icon-road" title="download file per normalizzatore"></i> <a href="{% url "norm" object.pk %}">Download file per la normalizzazione</a></li>
 			{% endif %} 
 		</ul>
 	

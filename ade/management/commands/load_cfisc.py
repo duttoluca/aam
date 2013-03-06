@@ -25,7 +25,7 @@ class Command(BaseCommand):
             r.save()
             for line in file(f, "rb"):
                 if line.strip() != '':
-                    d = ADE_detail(cfisc_orig=line[:16].strip().upper(),
+                    d = ADE_detail(cfisc_orig=(line.strip().upper())[:16],
                                    ADE_request=r)
                     d.save()
             #sposta file in archivio

@@ -9,6 +9,7 @@ class ADE_request(models.Model):
     (0, 'Inserito'),
     (1, 'Richiesto'),
     (2, 'Elaborato'),
+    (3, 'Normalizzato'),
     (99, 'Eliminato'),
 )
 
@@ -23,6 +24,10 @@ class ADE_request(models.Model):
                                        help_text="Data inserimento richiesta")
     return_date = models.DateTimeField(verbose_name="Data ritorno",
                                        help_text="Data ritorno richiesta",
+                                       blank=True,
+                                       null=True)
+    return_date_norm = models.DateTimeField(verbose_name="Data normalizzazione",
+                                       help_text="Data ritorno normalizzazione",
                                        blank=True,
                                        null=True)
 
@@ -78,6 +83,16 @@ class ADE_detail(models.Model):
     data_decesso = models.CharField(max_length=8, blank=True)
     ind_conf_comune = models.CharField(max_length=1, blank=True)
     nat_giurid = models.CharField(max_length=1, blank=True)
+    comune_residenza_norm = models.CharField(max_length=50, blank=True)
+    CAP_residenza_norm = models.CharField(max_length=5, blank=True)
+    prov_residenza_norm = models.CharField(max_length=2, blank=True)
+    sedime_residenza_norm = models.CharField(max_length=25, blank=True)
+    nome_via_residenza_norm = models.CharField(max_length=50, blank=True)
+    civico_residenza_norm = models.CharField(max_length=5, blank=True)
+    esponente_norm = models.CharField(max_length=75, blank=True)
+    cod_err1_norm = models.CharField(max_length=4, blank=True)
+    cod_err2_norm = models.CharField(max_length=4, blank=True)
+    indirizzo_breve_norm = models.CharField(max_length=50, blank=True)
     ADE_request = models.ForeignKey(ADE_request)
 
     def __unicode__(self):

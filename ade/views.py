@@ -55,6 +55,13 @@ def create_xls(request, pk):
     sheet.write(7, 10, 'CIVICO RES.', style=default_style)
     sheet.write(7, 11, 'DATA DECESSO', style=default_style)
     sheet.write(7, 12, 'DATA FONTE', style=default_style)
+    #normalizzazione
+    sheet.write(7, 13, 'COMUNE NORM.', style=default_style)
+    sheet.write(7, 14, 'PROV. NORM.', style=default_style)
+    sheet.write(7, 15, 'CAP NORM.', style=default_style)
+    sheet.write(7, 16, 'IND.BREVE NORM.', style=default_style)
+    sheet.write(7, 17, 'COD_ERR1 NORM.', style=default_style)
+    sheet.write(7, 18, 'COD_ERR2 NORM.', style=default_style)
 
     for row, detail in enumerate(details, start=8):
         sheet.write(row, 0, detail.cfisc_orig, style=default_style)
@@ -70,7 +77,13 @@ def create_xls(request, pk):
         sheet.write(row, 10, detail.civico_residenza, style=default_style)
         sheet.write(row, 11, detail.data_decesso, style=default_style)
         sheet.write(row, 12, detail.data_fonte, style=default_style)
-
+        # normalizzazione
+        sheet.write(row, 13, detail.comune_residenza_norm, style=default_style)
+        sheet.write(row, 14, detail.prov_residenza_norm, style=default_style)
+        sheet.write(row, 15, detail.CAP_residenza_norm, style=default_style)
+        sheet.write(row, 16, detail.indirizzo_breve_norm, style=default_style)
+        sheet.write(row, 17, detail.cod_err1_norm, style=default_style)
+        sheet.write(row, 18, detail.cod_err2_norm, style=default_style)
     response = HttpResponse(mimetype='application/vnd.ms-excel')
     response['Content-Disposition'] = 'attachment; filename=richiesta_' + str(req.pk).rjust(5, '0') + '.xls'
     book.save(response)

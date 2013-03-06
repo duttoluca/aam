@@ -8,8 +8,11 @@
 		<h2>Dettaglio della richiesta AdE #{{ object.pk }}</h2>
 		<ul class="unstyled">
 			<li>Nome richiesta originale: {{ object.original_filename }}</li>
-			<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}
-			<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}
+			<li>Data inserimento: {{ object.insert_date|date:"d F Y - G:i" }}</li>
+			<li>Data ritorno da Ade: {{ object.return_date|date:"d F Y - G:i" }}</li>
+			{% if object.status >= 3 %} 
+				<li>Data normalizzazione: {{ object.return_date_norm|date:"d F Y - G:i" }}</li>
+			{% endif %}
 			<li>Stato: <strong>{{ object.get_status_display }}</strong></li>
 			<li><i class="icon-th-list" title="download file excel"></i> <a href="{% url "excel" object.pk %}">Download file excel</a></li>
 			{% if object.status >= 2 %} 

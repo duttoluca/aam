@@ -60,6 +60,8 @@ class Command(BaseCommand):
                             ind_conf_comune = line[617:618].strip()
                         else:
                             cognome_denominazione = line[247:397].strip()
+                            data_nascita = sesso = cod_belfiore_nascita = comune_nascita = ''
+                            ind_decesso = data_decesso = ind_conf_comune = prov_nascita = ''
                             nome_acronimo = line[397:412].strip()
                             cod_belfiore_residenza = line[414:418].strip()
                             comune_residenza = line[418:463].strip()

@@ -5,7 +5,7 @@ from ade.models import ADE_request, ADE_detail
 
 
 class Command(BaseCommand):
-    help = "Crea i file di richiesta AdE"
+    help = "Crea i file di richiesta AdE per le richieste in stato INSERITO"
 
     def handle(self, *args, **options):
         ADE_HEADER = "080087670016     REGIONE PIEMONTE                                            ZNLFRZ59L25H620OZANELLA                                 FABRIZIO                                M25071959ROVIGO                                       RO                                                                      A\r\n"

@@ -26,17 +26,17 @@ class Command(BaseCommand):
                 req = ADE_request.objects.get(id=pk, status__gt=0)
                 for l in file(f, "rb"):
                     line = smart_unicode(l, encoding='latin_1')  # unicode
-                    cfisc_orig = line[28:44]
-                    comune_residenza_norm = line[757:807]
-                    prov_residenza_norm = line[862:864]
-                    CAP_residenza_norm = line[857:862]
-                    sedime_residenza_norm = line[944:969]
-                    nome_via_residenza_norm = line[969:1019]
-                    civico_residenza_norm = line[1019:1024]
-                    esponente_norm = line[1024:1099]
-                    cod_err1_norm = line[749:753]
-                    cod_err2_norm = line[753:757]
-                    indirizzo_breve_norm = line[1132:1182]
+                    cfisc_orig = line[28:44].strip()
+                    comune_residenza_norm = line[757:807].strip()
+                    prov_residenza_norm = line[862:864].strip()
+                    CAP_residenza_norm = line[857:862].strip()
+                    sedime_residenza_norm = line[944:969].strip()
+                    nome_via_residenza_norm = line[969:1019].strip()
+                    civico_residenza_norm = line[1019:1024].strip()
+                    esponente_norm = line[1024:1099].strip()
+                    cod_err1_norm = line[749:753].strip()
+                    cod_err2_norm = line[753:757].strip()
+                    indirizzo_breve_norm = line[1132:1182].strip()
                     #update
                     ADE_detail.objects.filter(ADE_request=pk, cfisc_orig=cfisc_orig).update(comune_residenza_norm=comune_residenza_norm,
                                                                                             prov_residenza_norm=prov_residenza_norm,

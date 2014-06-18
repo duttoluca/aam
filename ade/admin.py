@@ -9,7 +9,7 @@ class ADE_detailInline(admin.TabularInline):
 
 class ADE_requestAdmin(admin.ModelAdmin):
     inlines = [
-        ADE_detailInline,
+        #ADE_detailInline,
     ]
 
 admin.site.register(ADE_request, ADE_requestAdmin)

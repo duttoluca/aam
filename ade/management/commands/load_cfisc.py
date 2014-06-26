@@ -5,13 +5,14 @@ import shutil
 from django.core.management.base import BaseCommand
 from django.conf import settings
 from ade.models import ADE_request, ADE_detail
-
+from django.db import transaction
 
 # TODO spostare i file dopo fatti
 # inserire controlli
 class Command(BaseCommand):
     help = "Acquisisce elenco cfisc per richiesta AdE"
 
+    @transaction.commit_on_success()
     def handle(self, *args, **options):
         # per ogni file di tipo ADE_in una cartella
         files = glob.glob(os.path.join(settings.ADE_INPUT_DIR,
